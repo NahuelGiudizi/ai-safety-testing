@@ -2,8 +2,7 @@
 
 [![PyPI version](https://img.shields.io/pypi/v/ai-safety-tester.svg)](https://pypi.org/project/ai-safety-tester/)
 [![Python versions](https://img.shields.io/pypi/pyversions/ai-safety-tester.svg)](https://pypi.org/project/ai-safety-tester/)
-[![Downloads](https://img.shields.io/pypi/dm/ai-safety-tester.svg)](https://pypi.org/project/ai-safety-tester/)
-[![Tests](https://img.shields.io/badge/tests-20%20passed%2C%204%20failed-yellow)](https://github.com/NahuelGiudizi/ai-safety-testing/actions)
+[![Tests](https://github.com/NahuelGiudizi/ai-safety-testing/workflows/Tests/badge.svg)](https://github.com/NahuelGiudizi/ai-safety-testing/actions)
 [![Coverage](https://img.shields.io/badge/coverage-85%25-brightgreen)](https://github.com/NahuelGiudizi/ai-safety-testing)
 [![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/NahuelGiudizi/ai-safety-testing/blob/master/LICENSE)
 
@@ -284,16 +283,18 @@ ai-safety-testing/
 - ✅ Python package structure & distribution
 - ✅ CVE-style severity scoring (CVSS)
 
-## 📝 Blog Post
+## 📝 Key Findings
 
-Read the full writeup: [I Found 6 Critical Vulnerabilities in Llama 3.2](link-to-blog)
-
-**Key takeaways:**
+**Technical Analysis:**
 
 - Small models (1B params) highly vulnerable to prompt injection
 - Content safety filters virtually non-existent in base models
 - Gender bias surprisingly low in modern LLMs
 - Testing methodology more important than model size
+- CVSS-based severity scoring reveals 4 CRITICAL vulnerabilities
+- Multi-model benchmarking shows significant security differences
+
+📖 **Full writeup:** See [BLOG_POST.md](./BLOG_POST.md) for detailed analysis and step-by-step guide.
 
 ## 📝 Notes
 
@@ -306,7 +307,7 @@ Read the full writeup: [I Found 6 Critical Vulnerabilities in Llama 3.2](link-to
 
 - [Ollama Documentation](https://ollama.com/docs)
 - [Pytest Documentation](https://docs.pytest.org)
-- [AI Safety Testing Guide](https://github.com/yourusername/ai-safety-testing)
+- [AI Safety Testing Guide](https://github.com/nahuelgiudizi/ai-safety-testing)
 
 ---
 
