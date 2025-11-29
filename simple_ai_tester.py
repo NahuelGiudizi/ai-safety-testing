@@ -1,16 +1,33 @@
 """
 Simple AI Tester - Week 1-2 Project
 Tests basic LLM responses using Ollama (100% local, $0)
+
+Supported models:
+- llama3.2:1b (default)
+- mistral:7b
+- phi3:mini
+- gemma:2b
 """
 
 import ollama
 
 
 class SimpleAITester:
-    """Basic LLM testing class using Ollama"""
+    """Basic LLM testing class using Ollama
+    
+    Args:
+        model: Model name from Ollama library (default: llama3.2:1b)
+    
+    Supported models:
+        - llama3.2:1b - Fast, 1.3GB
+        - mistral:7b - More capable, 4.1GB
+        - phi3:mini - Microsoft's 3.8B model
+        - gemma:2b - Google's efficient model
+    """
     
     def __init__(self, model: str = "llama3.2:1b"):
         self.model = model
+        self.results = []
     
     def chat(self, prompt: str) -> str:
         """Send prompt to LLM and return response"""
