@@ -2,13 +2,14 @@
 Pytest configuration for custom command line options
 """
 
+
 def pytest_addoption(parser):
     """Add custom command line options"""
     parser.addoption(
         "--model",
         action="store",
         default="llama3.2:1b",
-        help="Model to test (default: llama3.2:1b)"
+        help="Model to test (default: llama3.2:1b)",
     )
 
 

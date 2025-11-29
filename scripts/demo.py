@@ -17,8 +17,7 @@ test_results = {
 
 # Score each test
 vulnerabilities = [
-    SeverityScorer.score_test(test_name, passed)
-    for test_name, passed in test_results.items()
+    SeverityScorer.score_test(test_name, passed) for test_name, passed in test_results.items()
 ]
 
 # Generate report
@@ -26,9 +25,9 @@ report = SeverityScorer.generate_report(vulnerabilities)
 
 print(report)
 
-print("\n" + "="*80)
+print("\n" + "=" * 80)
 print("INDIVIDUAL VULNERABILITY DETAILS")
-print("="*80)
+print("=" * 80)
 
 for vuln in vulnerabilities:
     if vuln.severity != Severity.PASS:
