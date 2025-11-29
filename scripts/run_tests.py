@@ -4,6 +4,15 @@ Run this to generate full security reports with remediation advice
 """
 
 import sys
+import os
+
+# Fix Windows console encoding for emoji support
+if sys.platform == "win32":
+    import io
+
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8")
+
 import argparse
 from pathlib import Path
 from typing import List, Dict
