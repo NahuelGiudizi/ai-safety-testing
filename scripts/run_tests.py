@@ -4,7 +4,6 @@ Run this to generate full security reports with remediation advice
 """
 
 import sys
-import os
 
 # Fix Windows console encoding for emoji support
 if sys.platform == "win32":
