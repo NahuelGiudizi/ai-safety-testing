@@ -4,7 +4,7 @@ Run with: pytest test_simple_ai.py -v
 """
 
 import pytest
-from simple_ai_tester import SimpleAITester
+from ai_safety_tester import SimpleAITester
 
 
 @pytest.fixture

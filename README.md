@@ -44,22 +44,22 @@ ollama pull llama3.2:1b
 # 3. Setup Python environment
 python -m venv venv
 venv\Scripts\activate  # Windows
-pip install -r requirements.txt
+pip install -e .  # Install package in development mode
 
-# 4. Run basic tests
-python simple_ai_tester.py
+# 4. Run pytest suite
+pytest tests/ -v
 
-# 5. Run pytest suite
-pytest test_simple_ai.py -v
+# 5. Run with coverage
+pytest tests/ -v --cov=src --cov-report=html
 
-# 6. Run with coverage
-pytest test_simple_ai.py -v --cov=. --cov-report=html
+# 6. Generate security report with severity scores
+python scripts/run_tests.py --model llama3.2:1b --report security_report.txt
 
-# 7. Generate security report with severity scores
-python run_comprehensive_tests.py --model llama3.2:1b --report security_report.txt
+# 7. Run multi-model benchmark
+python scripts/run_tests.py --benchmark-quick
 
-# 8. Run multi-model benchmark
-python run_comprehensive_tests.py --benchmark-quick
+# 8. Quick demo (no Ollama needed)
+python scripts/demo.py
 ```
 
 ## 📊 Test Results
@@ -139,10 +139,11 @@ Coverage: 85% | Runtime: ~29 seconds
 ## 🆕 New Features
 
 ### 1. Multi-Model Testing
+
 Test any Ollama model, not just Llama:
 
 ```python
-from simple_ai_tester import SimpleAITester
+from ai_safety_tester import SimpleAITester
 
 # Test different models
 tester_llama = SimpleAITester(model="llama3.2:1b")
@@ -152,19 +153,22 @@ tester_gemma = SimpleAITester(model="gemma:2b")
 ```
 
 **Supported models:**
+
 - `llama3.2:1b` - Fast, 1.3GB (Meta)
 - `mistral:7b` - More capable, 4.1GB (Mistral AI)
 - `phi3:mini` - Efficient 3.8B model (Microsoft)
 - `gemma:2b` - Google's efficient model
 
 ### 2. Severity Scoring System
+
 CVE-style vulnerability scoring with CVSS principles:
 
 ```bash
-python run_comprehensive_tests.py --model llama3.2:1b --report security_report.txt
+python scripts/run_tests.py --model llama3.2:1b --report security_report.txt
 ```
 
 **Output includes:**
+
 - 🔴 CRITICAL (9.0-10.0): Prompt injection, jailbreaks
 - 🟠 HIGH (7.0-8.9): Content safety, PII leakage
 - 🟡 MEDIUM (4.0-6.9): Bias issues, stereotypes
@@ -173,9 +177,11 @@ python run_comprehensive_tests.py --model llama3.2:1b --report security_report.t
 Each vulnerability gets a unique ID (e.g., `AIV-2025-3847`) and detailed remediation steps.
 
 ### 3. Automated Remediation Suggestions
+
 Every vulnerability includes specific fix recommendations:
 
 **Example for Prompt Injection (AIV-2025-XXXX):**
+
 ```
 Remediation:
 1. Implement input validation and sanitization
@@ -186,22 +192,25 @@ Remediation:
 ```
 
 ### 4. Multi-Model Benchmark Dashboard
+
 Compare security across different LLMs:
 
 ```bash
 # Quick benchmark with recommended models
-python run_comprehensive_tests.py --benchmark-quick
+python scripts/run_tests.py --benchmark-quick
 
 # Custom model selection
-python run_comprehensive_tests.py --benchmark --models llama3.2:1b mistral:7b phi3:mini
+python scripts/run_tests.py --benchmark --models llama3.2:1b mistral:7b phi3:mini
 ```
 
 **Generates:**
+
 - 📊 `benchmark_dashboard.html` - Interactive comparison table
 - 📄 `BENCHMARK_COMPARISON.md` - Markdown report for GitHub
 - 📋 `benchmark_results.json` - Raw data for analysis
 
 **Example output:**
+
 ```
 | Rank | Model         | Pass Rate | Security Score | Critical | High | Medium |
 |------|---------------|-----------|----------------|----------|------|--------|
@@ -211,13 +220,49 @@ python run_comprehensive_tests.py --benchmark --models llama3.2:1b mistral:7b ph
 ```
 
 ### 5. Enhanced CI/CD
+
 GitHub Actions now automatically:
+
 - ✅ Runs all 24 tests
 - ✅ Generates security report with remediation
 - ✅ Uploads report as artifact
 - ✅ Tracks coverage (85%)
 
 View security reports in Actions → Artifacts → `security-report`
+
+## 📁 Project Structure
+
+```
+ai-safety-testing/
+├── src/
+│   └── ai_safety_tester/        # Main package
+│       ├── __init__.py          # Package exports
+│       ├── tester.py            # SimpleAITester class
+│       ├── severity.py          # Severity scoring system
+│       └── benchmark.py         # Multi-model benchmarking
+├── tests/
+│   ├── __init__.py
+│   └── test_simple_ai.py        # 24 comprehensive tests
+├── scripts/
+│   ├── run_tests.py             # CLI for reports & benchmarks
+│   ├── demo.py                  # Quick severity demo
+│   └── quick_test.py            # Fast critical tests
+├── docs/
+│   ├── EXAMPLES.md              # Usage examples
+│   └── test_output.txt          # Sample test results
+├── .github/
+│   └── workflows/
+│       └── tests.yml            # CI/CD pipeline
+├── README.md
+├── setup.py                     # Package installation
+├── pytest.ini                   # Pytest configuration
+└── requirements.txt
+
+**Installation:**
+- Use `pip install -e .` for development mode
+- Package is importable: `from ai_safety_tester import SimpleAITester`
+- Scripts are executable: `python scripts/run_tests.py`
+```
 
 ## 🎓 Learning Outcomes
 
@@ -227,6 +272,8 @@ View security reports in Actions → Artifacts → `security-report`
 - ✅ Vulnerability identification (prompt injection, content safety)
 - ✅ Bias detection techniques
 - ✅ Test coverage reporting
+- ✅ Python package structure & distribution
+- ✅ CVE-style severity scoring (CVSS)
 
 ## 📝 Blog Post
 

@@ -8,9 +8,7 @@ import argparse
 from pathlib import Path
 from typing import List, Dict
 import pytest
-from simple_ai_tester import SimpleAITester
-from severity_scoring import SeverityScorer, Severity, get_severity_badge
-from benchmark_dashboard import BenchmarkDashboard, ModelBenchmark
+from ai_safety_tester import SimpleAITester, SeverityScorer, Severity, get_severity_badge, BenchmarkDashboard, ModelBenchmark
 
 
 def collect_test_results(model: str) -> Dict[str, bool]:
@@ -38,7 +36,7 @@ def collect_test_results(model: str) -> Dict[str, bool]:
     
     # Run pytest with custom args
     args = [
-        "test_simple_ai.py",
+        "tests/test_simple_ai.py",
         "-v",
         "--tb=no",
         "-q",

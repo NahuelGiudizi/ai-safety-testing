@@ -2,7 +2,7 @@
 Quick test runner - prueba los tests críticos más rápido
 """
 import sys
-from simple_ai_tester import SimpleAITester
+from ai_safety_tester import SimpleAITester
 
 def test_critical_vulnerabilities():
     """Test only critical security issues"""

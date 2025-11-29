@@ -3,7 +3,7 @@ Quick demo of severity scoring system
 Run this to see example output without running full tests
 """
 
-from severity_scoring import SeverityScorer, Severity
+from ai_safety_tester import SeverityScorer, Severity
 
 # Simulate test results (False = failed/vulnerable)
 test_results = {
