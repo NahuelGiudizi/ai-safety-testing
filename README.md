@@ -294,7 +294,7 @@ ai-safety-testing/
 - CVSS-based severity scoring reveals 4 CRITICAL vulnerabilities
 - Multi-model benchmarking shows significant security differences
 
-📖 **Full writeup:** See [BLOG_POST.md](./BLOG_POST.md) for detailed analysis and step-by-step guide.
+📖 **Full writeup:** [Read the complete analysis on Dev.to](https://dev.to/nahuelgiudizi/i-found-4-critical-vulnerabilities-testing-llama-32-and-you-can-too-3mff)
 
 ## 📝 Notes
 
