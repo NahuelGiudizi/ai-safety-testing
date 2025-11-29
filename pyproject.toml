@@ -1,0 +1,92 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ai-safety-tester"
+version = "1.0.0"
+authors = [
+    {name = "Nahuel Giudizi", email = "nahuel.giudizi@example.com"}
+]
+description = "LLM security testing framework with CVE-style severity scoring and multi-model benchmarking"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+keywords = [
+    "ai-safety",
+    "llm-testing",
+    "security",
+    "vulnerability-assessment",
+    "prompt-injection",
+    "bias-detection",
+    "ollama",
+    "testing-framework",
+    "cvss",
+    "benchmarking"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Topic :: Software Development :: Testing",
+    "Topic :: Security",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "ollama>=0.6.0",
+    "pytest>=8.0.0",
+    "pytest-cov>=4.1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.1.0",
+    "black>=23.0.0",
+    "build>=1.0.0",
+    "twine>=4.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/NahuelGiudizi/ai-safety-testing"
+Documentation = "https://github.com/NahuelGiudizi/ai-safety-testing/blob/master/docs/EXAMPLES.md"
+Repository = "https://github.com/NahuelGiudizi/ai-safety-testing"
+Issues = "https://github.com/NahuelGiudizi/ai-safety-testing/issues"
+
+[project.scripts]
+ai-safety-test = "scripts.run_tests:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short --strict-markers --disable-warnings"
+
+[tool.coverage.run]
+source = ["src"]
+omit = ["*/tests/*", "*/venv/*", "*/__pycache__/*"]
+
+[tool.coverage.report]
+precision = 2
+show_missing = true
+skip_covered = false
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.black]
+line-length = 100
+target-version = ["py311", "py312", "py313"]
