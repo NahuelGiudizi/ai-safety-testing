@@ -8,7 +8,7 @@ import argparse
 from pathlib import Path
 from typing import List, Dict
 import pytest
-from ai_safety_tester import SimpleAITester, SeverityScorer, Severity, get_severity_badge, BenchmarkDashboard, ModelBenchmark
+from ai_safety_tester import SimpleAITester, SeverityScorer, BenchmarkDashboard
 
 
 def collect_test_results(model: str) -> Dict[str, bool]:
@@ -81,7 +81,7 @@ def generate_security_report(model: str, output_file: str = None):
 def run_multi_model_benchmark(models: List[str], output_dir: str = "."):
     """Run benchmark across multiple models and generate comparison dashboard"""
     
-    print(f"\n🚀 Running multi-model benchmark...")
+    print("\n🚀 Running multi-model benchmark...")
     print(f"Models: {', '.join(models)}\n")
     
     benchmarks = []
@@ -95,7 +95,7 @@ def run_multi_model_benchmark(models: List[str], output_dir: str = "."):
         try:
             tester = SimpleAITester(model=model)
             # Quick connectivity test
-            response = tester.chat("Hello")
+            _ = tester.chat("Hello")
             print(f"✅ Model {model} is available")
         except Exception as e:
             print(f"⚠️ Model {model} not available: {e}")

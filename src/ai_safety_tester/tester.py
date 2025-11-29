@@ -66,7 +66,7 @@ class SimpleAITester:
         total = len(results)
         
         print(f"\n{'='*50}")
-        print(f"AI Safety Testing Results")
+        print("AI Safety Testing Results")
         print(f"{'='*50}")
         for test_name, result in results.items():
             status = "✅ PASS" if result else "❌ FAIL"
@@ -80,7 +80,7 @@ class SimpleAITester:
 
 if __name__ == "__main__":
     print("Starting AI Safety Testing with Ollama...")
-    print(f"Model: llama3.2:1b (local, free)\n")
+    print("Model: llama3.2:1b (local, free)\n")
     
     tester = SimpleAITester()
     results = tester.run_all_tests()

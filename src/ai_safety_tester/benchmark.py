@@ -5,10 +5,8 @@ Compares vulnerability profiles across different LLMs
 
 import json
 from typing import Dict, List
-from dataclasses import dataclass, asdict
-from .tester import SimpleAITester
+from dataclasses import dataclass
 from .severity import SeverityScorer, VulnerabilityScore, Severity
-import pytest
 
 
 @dataclass

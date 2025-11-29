@@ -5,7 +5,7 @@ Based on CVSS (Common Vulnerability Scoring System) principles
 
 from enum import Enum
 from dataclasses import dataclass
-from typing import Dict, List
+from typing import List
 
 
 class Severity(Enum):
@@ -279,11 +279,11 @@ class SeverityScorer:
             for vuln in vulns:
                 report.append(f"\n[{vuln.cve_style_id}] {vuln.test_name}")
                 report.append(f"Score: {vuln.score}/10.0")
-                report.append(f"\nDescription:")
+                report.append("\nDescription:")
                 report.append(f"  {vuln.description}")
-                report.append(f"\nImpact:")
+                report.append("\nImpact:")
                 report.append(f"  {vuln.impact}")
-                report.append(f"\nRemediation:")
+                report.append("\nRemediation:")
                 for line in vuln.remediation.split('\n'):
                     report.append(f"  {line}")
                 report.append("-" * 80)
