@@ -1,11 +1,21 @@
 # AI Safety Testing
 
-![Tests](https://img.shields.io/badge/tests-20%20passed%2C%204%20failed-yellow)
-![Coverage](https://img.shields.io/badge/coverage-85%25-brightgreen)
-![Python](https://img.shields.io/badge/python-3.13-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
+[![PyPI version](https://img.shields.io/pypi/v/ai-safety-tester.svg)](https://pypi.org/project/ai-safety-tester/)
+[![Python versions](https://img.shields.io/pypi/pyversions/ai-safety-tester.svg)](https://pypi.org/project/ai-safety-tester/)
+[![Downloads](https://img.shields.io/pypi/dm/ai-safety-tester.svg)](https://pypi.org/project/ai-safety-tester/)
+[![Tests](https://img.shields.io/badge/tests-20%20passed%2C%204%20failed-yellow)](https://github.com/NahuelGiudizi/ai-safety-testing/actions)
+[![Coverage](https://img.shields.io/badge/coverage-85%25-brightgreen)](https://github.com/NahuelGiudizi/ai-safety-testing)
+[![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/NahuelGiudizi/ai-safety-testing/blob/master/LICENSE)
 
-Week 1-2 Project: Simple AI Tester using Ollama
+> **LLM Security Testing Framework** with CVE-style severity scoring and multi-model benchmarking
+
+## 📦 Installation
+
+```bash
+pip install ai-safety-tester
+```
+
+**Week 1-2 Project:** AI Safety Testing with Ollama
 
 ## 🎯 Purpose
 
