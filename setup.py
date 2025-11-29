@@ -9,7 +9,7 @@ long_description = readme_file.read_text(encoding="utf-8") if readme_file.exists
 
 setup(
     name="ai-safety-tester",
-    version="1.0.2",
+    version="1.0.3",
     author="Nahuel Giudizi",
     author_email="your.email@example.com",
     description="LLM security testing framework with severity scoring and multi-model benchmarking",
