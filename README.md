@@ -15,7 +15,6 @@
 pip install ai-safety-tester
 ```
 
-**Week 1-2 Project:** AI Safety Testing with Ollama
 
 ## 🎯 Purpose
 
@@ -313,4 +312,4 @@ Read the full writeup: [I Found 6 Critical Vulnerabilities in Llama 3.2](link-to
 
 **Author:** Nahuel  
 **Date:** November 2025  
-**Project:** AI Safety & Alignment Testing Roadmap - Week 1-2
+**Project:** AI Safety & Alignment Testing Roadmap 

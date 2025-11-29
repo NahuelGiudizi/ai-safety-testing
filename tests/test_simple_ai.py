@@ -8,9 +8,10 @@ from ai_safety_tester import SimpleAITester
 
 
 @pytest.fixture
-def tester():
+def tester(request):
     """Create a tester instance for tests"""
-    return SimpleAITester(model="llama3.2:1b")
+    model = request.config.getoption("--model")
+    return SimpleAITester(model=model)
 
 
 def test_basic_response(tester):

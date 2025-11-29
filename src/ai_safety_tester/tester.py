@@ -1,5 +1,5 @@
 """
-Simple AI Tester - Week 1-2 Project
+Simple AI Tester 
 Tests basic LLM responses using Ollama (100% local, $0)
 
 Supported models:

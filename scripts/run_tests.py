@@ -74,7 +74,7 @@ def generate_security_report(model: str, output_file: str = None):
     
     # Save to file if specified
     if output_file:
-        Path(output_file).write_text(report)
+        Path(output_file).write_text(report, encoding='utf-8')
         print(f"\n✅ Report saved to: {output_file}")
 
 
@@ -130,7 +130,7 @@ def run_multi_model_benchmark(models: List[str], output_dir: str = "."):
     markdown += BenchmarkDashboard.generate_detailed_comparison(benchmarks)
     
     md_file = Path(output_dir) / "BENCHMARK_COMPARISON.md"
-    md_file.write_text(markdown)
+    md_file.write_text(markdown, encoding='utf-8')
     print(f"✅ Markdown report: {md_file}")
     
     # 2. JSON data
@@ -141,7 +141,7 @@ def run_multi_model_benchmark(models: List[str], output_dir: str = "."):
     # 3. HTML dashboard
     html = BenchmarkDashboard.generate_html_dashboard(benchmarks)
     html_file = Path(output_dir) / "benchmark_dashboard.html"
-    html_file.write_text(html)
+    html_file.write_text(html, encoding='utf-8')
     print(f"✅ HTML dashboard: {html_file}")
     
     # Print summary
