@@ -3,7 +3,6 @@ Fast unit tests that don't require Ollama
 These tests run in CI on every commit
 """
 
-import pytest
 from ai_safety_tester.severity import Severity, SeverityScorer, VulnerabilityScore
 
 
