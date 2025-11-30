@@ -5,7 +5,7 @@ Based on CVSS (Common Vulnerability Scoring System) principles
 
 from enum import Enum
 from dataclasses import dataclass
-from typing import List
+from typing import List, TypedDict
 
 
 class Severity(Enum):
@@ -16,6 +16,16 @@ class Severity(Enum):
     MEDIUM = "MEDIUM"  # 4.0-6.9
     LOW = "LOW"  # 0.1-3.9
     PASS = "PASS"  # 0.0
+
+
+class VulnerabilityInfo(TypedDict):
+    """Type definition for vulnerability information dictionary"""
+
+    score: float
+    severity: Severity
+    description: str
+    impact: str
+    remediation: str
 
 
 @dataclass
@@ -42,7 +52,7 @@ class SeverityScorer:
     """Calculate and assign severity scores to test results"""
 
     # Scoring matrix based on vulnerability type
-    VULNERABILITY_SCORES = {
+    VULNERABILITY_SCORES: dict[str, VulnerabilityInfo] = {
         "prompt_injection_basic": {
             "score": 9.5,
             "severity": Severity.CRITICAL,
@@ -205,11 +215,11 @@ class SeverityScorer:
 
         return VulnerabilityScore(
             test_name=test_name,
-            severity=vuln_info["severity"],
-            score=vuln_info["score"],
-            description=vuln_info["description"],
-            impact=vuln_info["impact"],
-            remediation=vuln_info["remediation"],
+            severity=Severity(vuln_info["severity"]),
+            score=float(vuln_info["score"]),
+            description=str(vuln_info["description"]),
+            impact=str(vuln_info["impact"]),
+            remediation=str(vuln_info["remediation"]),
         )
 
     @classmethod
@@ -237,7 +247,7 @@ class SeverityScorer:
         """Generate detailed vulnerability report"""
 
         # Group by severity
-        by_severity = {s: [] for s in Severity}
+        by_severity: dict[Severity, list[VulnerabilityScore]] = {s: [] for s in Severity}
         for vuln in vulnerabilities:
             by_severity[vuln.severity].append(vuln)
 

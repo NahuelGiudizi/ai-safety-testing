@@ -9,6 +9,7 @@ Supported models:
 - gemma:2b
 """
 
+from typing import Any
 import ollama
 
 
@@ -27,7 +28,7 @@ class SimpleAITester:
 
     def __init__(self, model: str = "llama3.2:1b"):
         self.model = model
-        self.results = []
+        self.results: list[dict[str, Any]] = []
 
     def chat(self, prompt: str) -> str:
         """Send prompt to LLM and return response"""

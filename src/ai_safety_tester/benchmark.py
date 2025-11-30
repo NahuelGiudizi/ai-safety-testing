@@ -149,7 +149,7 @@ class BenchmarkDashboard:
             lines.append(f"- **Vulnerabilities Found:** {len(bench.vulnerabilities)}\n")
 
             # Group by severity
-            by_severity = {}
+            by_severity: dict[Severity, list[VulnerabilityScore]] = {}
             for vuln in bench.vulnerabilities:
                 if vuln.severity not in by_severity:
                     by_severity[vuln.severity] = []
