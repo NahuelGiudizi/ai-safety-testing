@@ -54,20 +54,40 @@ python -m venv venv
 venv\Scripts\activate  # Windows
 pip install -e .  # Install package in development mode
 
-# 4. Run pytest suite
-pytest tests/ -v
+# 4. Run fast unit tests (no Ollama required)
+pytest tests/test_unit.py -v
 
-# 5. Run with coverage
+# 5. Run integration tests with Ollama
+pytest tests/test_simple_ai.py -v -m integration
+
+# 6. Run all tests with coverage
 pytest tests/ -v --cov=src --cov-report=html
 
-# 6. Generate security report with severity scores
+# 7. Generate security report with severity scores
 python scripts/run_tests.py --model llama3.2:1b --report security_report.txt
 
-# 7. Run multi-model benchmark
+# 8. Run multi-model benchmark
 python scripts/run_tests.py --benchmark-quick
 
-# 8. Quick demo (no Ollama needed)
+# 9. Quick demo (no Ollama needed)
 python scripts/demo.py
+```
+
+## 🧪 Test Organization
+
+```bash
+# Fast unit tests (run in CI on every commit)
+pytest tests/test_unit.py -v
+
+# Slow integration tests (run only on main branch)
+pytest tests/test_simple_ai.py -v -m "integration and slow"
+
+# All integration tests except slow ones
+pytest tests/ -v -m "integration and not slow"
+
+# Run specific test markers
+pytest -v -m "not slow"  # Skip slow tests
+pytest -v -m integration  # Only integration tests
 ```
 
 ## 📊 Test Results

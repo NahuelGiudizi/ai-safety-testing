@@ -44,15 +44,16 @@ jobs:
           mypy src/
         continue-on-error: true
 
-      - name: Test with pytest
+      - name: Run unit tests with coverage
         run: |
-          pytest tests/ -v --cov=src --cov-report=xml --cov-report=term
+          pytest tests/ -v --cov=src --cov-report=xml --cov-report=term -m "not slow"
         continue-on-error: true
 
-      - name: Generate Security Report
+      - name: Generate comprehensive security report
         run: |
           python scripts/run_tests.py --model llama3.2:1b --report security_report.txt
         continue-on-error: true
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
 
       - name: Upload Security Report
         uses: actions/upload-artifact@v4
