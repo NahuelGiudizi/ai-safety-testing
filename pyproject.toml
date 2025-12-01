@@ -42,6 +42,7 @@ dependencies = [
     "ollama>=0.6.0",
     "pytest>=8.0.0",
     "pytest-cov>=4.1.0",
+    "pytest-timeout>=2.2.0",
     "datasets>=2.14.0",
     "tqdm>=4.66.0",
 ]
