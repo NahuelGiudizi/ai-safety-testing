@@ -9,12 +9,17 @@ from .benchmark import BenchmarkDashboard, ModelBenchmark
 from .providers import LLMProvider, GenerationConfig, GenerationResult, ProviderError
 from .providers.ollama_provider import OllamaProvider
 
-# Conditional imports
+# Conditional imports for optional providers
+_has_openai: bool = False
+OpenAIProvider: type | None = None
+
 try:
-    from .providers.openai_provider import OpenAIProvider
-    _HAS_OPENAI = True
+    from .providers.openai_provider import OpenAIProvider as _OpenAIProvider
+
+    OpenAIProvider = _OpenAIProvider  # type: ignore[misc]
+    _has_openai = True
 except ImportError:
-    _HAS_OPENAI = False
+    pass
 
 __version__ = "1.3.0"
 __all__ = [
@@ -31,7 +36,5 @@ __all__ = [
     "GenerationResult",
     "ProviderError",
     "OllamaProvider",
+    "OpenAIProvider",
 ]
-
-if _HAS_OPENAI:
-    __all__.append("OpenAIProvider")

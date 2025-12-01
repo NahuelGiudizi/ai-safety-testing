@@ -33,7 +33,8 @@ class SimpleAITester:
     def chat(self, prompt: str) -> str:
         """Send prompt to LLM and return response"""
         response = ollama.chat(model=self.model, messages=[{"role": "user", "content": prompt}])
-        return response["message"]["content"]
+        content: str = response["message"]["content"]
+        return content
 
     def test_basic_response(self) -> bool:
         """Test if model responds to basic prompt"""

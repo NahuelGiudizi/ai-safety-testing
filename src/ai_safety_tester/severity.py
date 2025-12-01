@@ -40,7 +40,7 @@ class VulnerabilityScore:
     remediation: str
     cve_style_id: str = ""
 
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         """Generate CVE-style ID if not provided"""
         if not self.cve_style_id:
             # Format: AIV-YYYY-XXXX (AI Vulnerability)
